@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>The Best Photography Booking App</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hom/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<div class="wrapper row1" style="background-color:white;">
+  <section id="ctdetails" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <ul class="nospace clear">
+      <li class="one_quarter first">
+        <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Give us a call:</strong> +00 (123) 456 7890</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Send us a mail:</strong> support@domain.com</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Mon. - Sat.:</strong> 08.00am - 18.00pm</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Come visit us:</strong> Directions to <a href="#">our location</a></span></div>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+<!-- Top Background Image Wrapper -->
+
+    <!-- ################################################################################################ -->
+</div>
+<div class="bgded overlay" style="background-image:url({% static 'hom/images/demo/backgrounds/Photo-studio.jpg' %});">
+<div class="wrapper row1">
+     <div class="fl_right">
+      <ul class="nospace">
+        <li id="searchform">
+          <div>
+            <form action="{% url 'search' %}" method="get">
+<!--              <fieldset>-->
+<!--                <legend>Quick Search:</legend>-->
+<!--                <input type="text" placeholder="Enter search term" name="q">-->
+<!--                <button type="submit"><i class="fas fa-search"></i></button>-->
+<!--              </fieldset>-->
+            </form>
+          </div>
+        </li>
+      </ul>
+     </div>
+</div>
+  <div id="pageintro" class="hoc clear">
+    <article>
+      <h3 class="heading">The Best Photography Booking App</h3>
+      <p><i>Photography businesses need an efficient photography booking app to schedule their appointments.
+
+This is critical regardless of their focus. Whether portrait photography, wedding photography, travel shoots, or a mixture of everything.
+
+In business, relationships and connections are everything. An efficient appointment booking system positively impacts the company.
+
+Checking email threads to confirm availability for clients is an inefficient booking system.
+
+There is software available for photographers. Some of these automate and simplify the administrative side of the photography business.
+
+This includes scheduling software, which gives users more time to focus on creativity.
+
+This article examines 16 of the best Photography Booking Apps. Let’s check them out.</p>
+
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+  <!-- ################################################################################################ -->
+</div>
+<div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="introblocks">
+      <ul class="nospace group grid-3">
+        {% for i in pg.object_list %}
+        <li class="one_third">
+          <figure><a class="imgover" href="{{i.get_url}}"><img src='{{i.img.url}}' alt="" style="width:400px;height:400px;"></a>
+
+            <figcaption><a href="{{i.get_url}}">{{i.name}}</a></figcaption>
+            <h1>{{i.price}}$</h1>
+            <p>{{i.desc}}</p>
+            </figure>
+        </li>
+  {% endfor %}
+
+      </ul>
+    </section>
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<center>
+{% for p in pg.paginator.page_range %}
+
+  <a href="?page={{p}}"class="btn btn-light btn-sm{% if pg.number == p %} active {% endif %}" style="background-color:orange;">{{p}}</a>
+
+{% endfor %}
+</center>
+
+          <h6 class="heading">Abarama</h6>
+          <p>Photography is the art, application, and practice of creating durable images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. [<a href="#">&hellip;</a>]</p>
+          <ul class="faico clear">
+            <li><a class="faicon-facebook" href="{% static '#' %}"><i class="fab fa-facebook"></i></a></li>
+            <li><a class="faicon-google-plus" href="{% static '#' %}"><i class="fab fa-google-plus-g"></i></a></li>
+            <li><a class="faicon-linkedin" href="{% static '#' %}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a class="faicon-twitter" href="{% static '#' %}"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="faicon-vk" href="{% static '#' %}"><i class="fab fa-vk"></i></a></li>
+          </ul>
+        </div>
+        <div class="one_quarter">
+          <h6 class="heading">Connect us</h6>
+          <ul class="nospace linklist">
+          </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+        </div>
+
+
+      </div>
+ </div>
+
+      <!-- ################################################################################################ -->
+<!-- JAVASCRIPTS -->
+<script src="{% static 'hom/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'hom/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'hom/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>
+</html>
+{% endblock %}

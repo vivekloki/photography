@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link href="{% static 'prdetail/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- About Start -->
+
+            <div class="row m-0">
+                <div class="col-md-6 p-0" style="min-height:400px;">
+                    <img class="position-absolute w-100 h-100" src="{{pr.img.url}}" style="object-fit: cover;">
+                </div>
+                <div class="col-md-6 p-0 text-center text-md-left">
+                    <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+                        <h3 class="mb-3">{{pr.name}}</h3>
+                        <p>{{pr.desc}}</p>
+                        <h3>{{pr.price}}$</h3>
+                        <p>{{pr.stock}}</p>
+      {% if pr.stock <= 0 %}
+      <h1 style="color:red">Sorry! No stock left</h1>
+                        {% else %}
+                        <a href="{% url 'addcart' pr.id %}" class="tm-btn- tm-btn-1 tm-link-to-services">Add to cart</a>
+{% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+</body>
+
+</html>
+{% endblock %}
